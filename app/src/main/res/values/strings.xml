@@ -6,7 +6,7 @@
 
     <string name="title_section1">Home</string>
     <string name="title_section2">My Events</string>
-    <string name="title_section3">Profile</string>
+    <string name="title_section3">Create Event</string>
     <string name="title_section4">Logout</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>

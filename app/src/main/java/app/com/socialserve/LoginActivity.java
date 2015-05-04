@@ -39,7 +39,7 @@ public class LoginActivity extends FragmentActivity
         //to determine which fragment to show
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-        //determine which fragment needs to be shown
+        //show the login screen by default
         transaction.add(R.id.fragment_container, loginView).commit();
     }
 

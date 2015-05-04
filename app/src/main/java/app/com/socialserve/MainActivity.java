@@ -18,7 +18,11 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
 
+        checkSession();
 
+
+    }
+    public void checkSession(){
         //determine if user needs to login
         // or if user goes to logged in activity if currently logged in
 
@@ -32,6 +36,16 @@ public class MainActivity extends ActionBarActivity {
             Intent login = new Intent(this, LoginActivity.class);
             startActivity(login);
         }
+
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();  // Always call the superclass method first
+
+        checkSession();
+
 
     }
 
