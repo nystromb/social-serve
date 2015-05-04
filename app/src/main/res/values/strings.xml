@@ -20,4 +20,7 @@
     <string name="title_activity_add_dinner_party">Add Dinner Party</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_application">Application</string>
+
+    <string name="parseKey">6K0xKg6n05u4nq1sMCnAFRtXFYNJiLuSRc1Ma6cc</string>
+    <string name="parseSecret">JxAELcOmc4Am3BYg7tKLqUhnP7SxJ8E0AdoeBJgz</string>
 </resources>

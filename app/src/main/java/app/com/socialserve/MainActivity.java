@@ -17,8 +17,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //initialize parse with keys
-        Parse.initialize(this, "6K0xKg6n05u4nq1sMCnAFRtXFYNJiLuSRc1Ma6cc", "JxAELcOmc4Am3BYg7tKLqUhnP7SxJ8E0AdoeBJgz");
+
 
         //determine if user needs to login
         // or if user goes to logged in activity if currently logged in
