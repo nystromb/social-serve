@@ -10,13 +10,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/eventName"
+        android:text="Name"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="99dp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:hint="Event Name" />
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -27,7 +27,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/eventName"
         android:layout_alignEnd="@+id/eventName"
-        android:hint="Event Location" />
+        android:text="Address" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -38,9 +38,9 @@
         android:layout_below="@+id/location"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:text="Seats Available"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:hint="Seats Available" />
+        android:layout_alignParentEnd="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -53,20 +53,22 @@
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/seatsAvailable"
         android:layout_alignEnd="@+id/seatsAvailable"
-        android:hint="Event Date (MM-DD-YYYY)" />
+        android:text="Date" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
         android:ems="10"
         android:id="@+id/description"
-        android:hint="Desribe your event"
+        android:layout_below="@+id/date"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/date"
         android:layout_alignRight="@+id/date"
         android:layout_alignEnd="@+id/date"
-        android:layout_above="@+id/ingredients" />
+        android:text="Description"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="143dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -74,12 +76,14 @@
         android:inputType="textMultiLine"
         android:ems="10"
         android:id="@+id/ingredients"
-        android:hint="Ingredients"
-        android:layout_above="@+id/addParty"
+        android:text="Ingredients"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/description"
-        android:layout_alignEnd="@+id/description" />
+        android:layout_alignEnd="@+id/description"
+        android:layout_above="@+id/addParty"
+        android:layout_alignTop="@+id/description"
+        android:layout_marginTop="145dp" />
 
     <Button
         android:layout_width="wrap_content"
