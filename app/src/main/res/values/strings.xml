@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">SocialServe</string>
+
+    <string name="title_landing_feed">Landing Feed</string>
+    <string name="title_activity_login">Social Serve Login</string>
+
+    <string name="title_section1">Home</string>
+    <string name="title_section2">My Events</string>
+    <string name="title_section3">Profile</string>
+    <string name="title_section4">Logout</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_add_dinner_party">Add Dinner Party</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_application">Application</string>
+</resources>
