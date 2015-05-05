@@ -77,6 +77,7 @@ public class LandingFeed extends ActionBarActivity
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
         Fragment fragment = null;
+        int flag = 0;
         switch(position){
             case 0:
                 fragment = PlaceholderFragment.newInstance(position+1);
@@ -88,15 +89,17 @@ public class LandingFeed extends ActionBarActivity
                 break;
             case 3:
                 ParseUser.logOut();
+                flag = 1;
                 Intent i = new Intent(this, MainActivity.class);
                 startActivity(i);
-                finish();
                 break;
         }
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, fragment)
-                .commit();
+        if(flag != 1) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, fragment)
+                    .commit();
+        }
     }
 
     public void onSectionAttached(int number) {
