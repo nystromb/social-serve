@@ -2,6 +2,7 @@ package app.com.socialserve;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -15,11 +16,37 @@ import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.Toast;
 
+import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 
 public class LandingFeed extends ActionBarActivity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks,
+                    AddDinnerParty.CreateEventListener {
+
+    @Override
+    public void createEvent(String name, String address, int seatsAvail, String date, String desc, String ingredients, String host) {
+        ParseObject events = new ParseObject("events");
+        events.put("name", name);
+        events.put("location", address);
+        events.put("seatsAvailable", seatsAvail);
+        events.put("time", date);
+        events.put("description", desc);
+        events.put("ingredients", ingredients);
+        events.put("host", host);
+        events.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if(e == null){
+                    Toast.makeText(getApplicationContext(), "Event Created", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -27,7 +54,7 @@ public class LandingFeed extends ActionBarActivity
     private NavigationDrawerFragment mNavigationDrawerFragment;
 
     /**
-     * Used to store the last screen title. For use in {@link #restoreActionBar()}.
+     * Used to store the last screen title. For use in {@link #//restoreActionBar()}.
      */
     private CharSequence mTitle;
 
@@ -49,9 +76,26 @@ public class LandingFeed extends ActionBarActivity
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
+        Fragment fragment = null;
+        switch(position){
+            case 0:
+                fragment = PlaceholderFragment.newInstance(position+1);
+                break;
+            case 1:
+                break;
+            case 2:
+                fragment = AddDinnerParty.newInstance(position+1);
+                break;
+            case 3:
+                ParseUser.logOut();
+                Intent i = new Intent(this, MainActivity.class);
+                startActivity(i);
+                finish();
+                break;
+        }
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                .replace(R.id.container, fragment)
                 .commit();
     }
 
@@ -65,8 +109,8 @@ public class LandingFeed extends ActionBarActivity
                 break;
             case 3:
                 mTitle = getString(R.string.title_section3);
-                Intent addPartyIntent = new Intent(this, AddDinnerParty.class);
-                startActivity(addPartyIntent);
+                //Intent addPartyIntent = new Intent(this, AddDinnerParty.class);
+                //startActivity(addPartyIntent);
                 break;
             case 4:
                 mTitle = getString(R.string.title_section4);
@@ -78,12 +122,13 @@ public class LandingFeed extends ActionBarActivity
         }
     }
 
-    public void restoreActionBar() {
+   public void restoreActionBar() {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(mTitle);
     }
+
 
 
     @Override

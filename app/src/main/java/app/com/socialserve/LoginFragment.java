@@ -15,6 +15,7 @@ import android.widget.EditText;
  * A simple {@link Fragment} subclass.
  */
 public class LoginFragment extends Fragment {
+    private static final String ARG_SECTION_NUMBER = "section_number";
 
     LoginOnClickListener listener;
 
@@ -41,6 +42,13 @@ public class LoginFragment extends Fragment {
 
     public LoginFragment() {
         // Required empty public constructor
+    }
+    public static LoginFragment newInstance(int sectionNumber){
+        LoginFragment fragment = new LoginFragment();
+        Bundle args = new Bundle();
+        args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+        fragment.setArguments(args);
+        return fragment;
     }
 
 
