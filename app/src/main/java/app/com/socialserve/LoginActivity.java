@@ -92,7 +92,7 @@ public class LoginActivity extends FragmentActivity
                     // to figure out what went wrong
                     Toast.makeText(
                             getApplicationContext(),
-                            e.getMessage().toString(),
+                            e.getMessage(),
                             Toast.LENGTH_LONG
                     ).show();
                 }
