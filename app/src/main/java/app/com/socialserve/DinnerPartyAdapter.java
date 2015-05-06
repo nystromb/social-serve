@@ -14,21 +14,18 @@ import com.parse.ParseQueryAdapter;
 
 public class DinnerPartyAdapter extends ParseQueryAdapter<Dinner> {
 
+    //query to get all events
     public DinnerPartyAdapter(Context context) {
-        // Use the QueryFactory to construct a PQA that will only show
-        // Todos marked as high-pri
         super(context, new ParseQueryAdapter.QueryFactory<Dinner>() {
             public ParseQuery create() {
                 ParseQuery query = new ParseQuery("events");
-
                 return query;
             }
         });
     }
 
+    //query to get events with the specified name
     public DinnerPartyAdapter(Context context, final String name, final Object obj) {
-        // Use the QueryFactory to construct a PQA that will only show
-        // Todos marked as high-pri
         super(context, new ParseQueryAdapter.QueryFactory<Dinner>() {
             public ParseQuery create() {
                 ParseQuery query = new ParseQuery("events");
@@ -48,10 +45,9 @@ public class DinnerPartyAdapter extends ParseQueryAdapter<Dinner> {
 
         v = View.inflate(getContext(), R.layout.urgent_item, null);
 
-
         super.getItemView(dinner, v, parent);
 
-        // Add the title view
+        // Add all data to the layout
         TextView titleTextView = (TextView) v.findViewById(R.id.list_name);
         titleTextView.setText(dinner.getTitle());
 
