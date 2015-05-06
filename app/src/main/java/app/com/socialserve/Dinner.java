@@ -63,4 +63,7 @@ public class Dinner extends ParseObject {
     public int getSeats(){
         return getInt("seatsAvailable");
     }
+
+    public int getSeatsSold(){ return getInt("seatsSold"); }
+
 }
