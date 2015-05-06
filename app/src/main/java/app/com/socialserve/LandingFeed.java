@@ -83,6 +83,7 @@ public class LandingFeed extends ActionBarActivity
                 fragment = PlaceholderFragment.newInstance(position+1);
                 break;
             case 1:
+                fragment = EventsFragment.newInstance(position+1);
                 break;
             case 2:
                 fragment = AddDinnerParty.newInstance(position+1);

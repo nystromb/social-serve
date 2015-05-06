@@ -6,9 +6,9 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:name=".SocialServeApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:name=".SocialServeApp"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
@@ -31,6 +31,10 @@
         <activity
             android:name=".AddDinnerParty"
             android:label="@string/title_activity_add_dinner_party" >
+        </activity>
+        <activity
+            android:name=".Dinner"
+            android:label="@string/title_activity_dinner" >
         </activity>
     </application>
 

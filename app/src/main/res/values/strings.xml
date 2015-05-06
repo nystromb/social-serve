@@ -23,4 +23,8 @@
 
     <string name="parseKey">6K0xKg6n05u4nq1sMCnAFRtXFYNJiLuSRc1Ma6cc</string>
     <string name="parseSecret">JxAELcOmc4Am3BYg7tKLqUhnP7SxJ8E0AdoeBJgz</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_dinner">Dinner</string>
 </resources>
