@@ -21,7 +21,7 @@ public class EventsFragment extends Fragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
 
     ListView eventsList;
-    private ParseQueryAdapter<Dinner> mainAdapter;
+    private ParseQueryAdapter mainAdapter;
     private DinnerPartyAdapter eventsAdapter;
 
 
@@ -57,13 +57,10 @@ public class EventsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_events, container, false);
-        mainAdapter = new ParseQueryAdapter<Dinner>(this.getActivity(), Dinner.class);
-        mainAdapter.setTextKey("name");
-
-        //mainAdapter.setImageKey("photo");
+        mainAdapter = new DinnerPartyAdapter(view.getContext());
 
         //Subclass of Parse Query Adapter
-        eventsAdapter = new DinnerPartyAdapter(this.getActivity());
+
         eventsList = (ListView) view.findViewById(R.id.eventsListView);
         eventsList.setAdapter(mainAdapter);
         return view;
