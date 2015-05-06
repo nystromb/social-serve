@@ -2,7 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp">
+    android:paddingLeft="10dp"
+    android:layout_margin="5dp"
+    android:background="@layout/materialdrop"
+    android:dividerHeight="0dp" >>
 
 
     <TextView
@@ -11,6 +14,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Graduation"
         android:id="@+id/list_name"
+        android:textColor="#203246"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -20,7 +24,7 @@
         android:layout_height="wrap_content"
         android:text="on 12/23/2015"
         android:id="@+id/list_date"
-        android:layout_marginLeft="5dp"
+        android:paddingTop="-3dp"
         android:layout_below="@id/list_name"
         android:layout_alignParentLeft ="true" />
 
@@ -29,6 +33,7 @@
         android:layout_height="wrap_content"
         android:text="This is a description of the party"
         android:id="@+id/list_description"
+        android:textColor="#203246"
         android:layout_below="@id/list_date" />
 
     <LinearLayout
@@ -43,13 +48,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/attend"
+            android:textColor="#203246"
             android:id="@+id/textView"
             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/eventAttending" />
+            android:id="@+id/eventAttending"
+            android:textColor="#15856f"
+            />
 
     </LinearLayout>
 
