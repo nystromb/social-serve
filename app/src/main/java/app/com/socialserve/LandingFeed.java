@@ -1,8 +1,6 @@
 package app.com.socialserve;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -16,9 +14,7 @@ import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import com.parse.ParseException;
-import com.parse.ParseObject;
 import com.parse.ParseQueryAdapter;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
@@ -26,7 +22,7 @@ import com.parse.SaveCallback;
 
 public class LandingFeed extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks,
-                    AddDinnerParty.CreateEventListener {
+                   AddDinnerParty.CreateEventListener {
 
     @Override
     public void createEvent(String name, String address, int seatsAvail, String date, String desc, String ingredients, String host) {
@@ -79,52 +75,32 @@ public class LandingFeed extends ActionBarActivity
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
         Fragment fragment = null;
-        int flag = 0;
+
         switch(position){
             case 0:
                 fragment = PlaceholderFragment.newInstance(position+1);
+                mTitle = getString(R.string.title_section1);
                 break;
             case 1:
                 fragment = EventsFragment.newInstance(position+1);
+                mTitle = getString(R.string.title_section2);
                 break;
             case 2:
                 fragment = AddDinnerParty.newInstance(position+1);
+                mTitle = getString(R.string.title_section3);
                 break;
             case 3:
                 ParseUser.logOut();
-                flag = 1;
                 Intent i = new Intent(this, MainActivity.class);
                 startActivity(i);
                 break;
         }
-        if(flag != 1) {
+
+        if(ParseUser.getCurrentUser() != null) {
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction()
                     .replace(R.id.container, fragment)
                     .commit();
-        }
-    }
-
-    public void onSectionAttached(int number) {
-        switch (number) {
-            case 1:
-                mTitle = getString(R.string.title_section1);
-                break;
-            case 2:
-                mTitle = getString(R.string.title_section2);
-                break;
-            case 3:
-                mTitle = getString(R.string.title_section3);
-                //Intent addPartyIntent = new Intent(this, AddDinnerParty.class);
-                //startActivity(addPartyIntent);
-                break;
-            case 4:
-                mTitle = getString(R.string.title_section4);
-                ParseUser.logOut();
-                Toast.makeText(getApplicationContext(), "Logged out", Toast.LENGTH_LONG).show();
-                Intent i = new Intent(this, MainActivity.class);
-                startActivity(i);
-                break;
         }
     }
 
@@ -176,6 +152,8 @@ public class LandingFeed extends ActionBarActivity
         private ParseQueryAdapter mainAdapter;
         ListView eventsList;
 
+        public PlaceholderFragment() {
+        }
 
         /**
          * Returns a new instance of this fragment for the given section
@@ -189,27 +167,16 @@ public class LandingFeed extends ActionBarActivity
             return fragment;
         }
 
-        public PlaceholderFragment() {
-        }
-
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
+
             View view = inflater.inflate(R.layout.fragment_events, container, false);
             mainAdapter = new DinnerPartyAdapter(view.getContext());
-
-            //Subclass of Parse Query Adapter
 
             eventsList = (ListView) view.findViewById(R.id.eventsListView);
             eventsList.setAdapter(mainAdapter);
             return view;
-        }
-
-        @Override
-        public void onAttach(Activity activity) {
-            super.onAttach(activity);
-            ((LandingFeed) activity).onSectionAttached(
-                    getArguments().getInt(ARG_SECTION_NUMBER));
         }
     }
 
