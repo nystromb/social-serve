@@ -28,14 +28,14 @@ public class LandingFeed extends ActionBarActivity
 
     @Override
     public void createEvent(String name, String address, int seatsAvail, String date, String desc, String ingredients, String host) {
-        ParseObject events = new ParseObject("events");
-        events.put("name", name);
-        events.put("location", address);
-        events.put("seatsAvailable", seatsAvail);
-        events.put("time", date);
-        events.put("description", desc);
-        events.put("ingredients", ingredients);
-        events.put("host", host);
+        Dinner events = new Dinner();
+        events.setTitle(name);
+        events.setLocation(address);
+        events.setSeats(seatsAvail);
+        events.setTime(date);
+        events.setDescription(desc);
+        events.setIngredients(ingredients);
+        events.setHost(host);
         events.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
