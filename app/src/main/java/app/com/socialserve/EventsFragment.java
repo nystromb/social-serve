@@ -20,15 +20,10 @@ import com.parse.ParseQueryAdapter;
 public class EventsFragment extends Fragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
 
-    RegisterOnClickListener listener;
-
     ListView eventsList;
     private ParseQueryAdapter<Dinner> mainAdapter;
     private DinnerPartyAdapter eventsAdapter;
-    Button register;
-    public interface RegisterOnClickListener{
-        public void registerUser(String username, String name, String email, String password);
-    }
+
 
     @Override
     public void onAttach(Activity activity) {
@@ -64,6 +59,7 @@ public class EventsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_events, container, false);
         mainAdapter = new ParseQueryAdapter<Dinner>(this.getActivity(), Dinner.class);
         mainAdapter.setTextKey("name");
+
         //mainAdapter.setImageKey("photo");
 
         //Subclass of Parse Query Adapter
