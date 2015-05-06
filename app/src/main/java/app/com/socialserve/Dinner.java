@@ -58,6 +58,8 @@ public class Dinner extends ParseObject {
         put("ingredients", ingredients);
     }
 
+    public void setSeats(int seats){ put("seatsAvailable", seats); }
+
     public int getSeats(){
         return getInt("seatsAvailable");
     }

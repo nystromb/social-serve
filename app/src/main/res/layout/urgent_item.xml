@@ -51,7 +51,8 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:id="@+id/eventAttending"
-            android:text="0"/>
+            android:text="0"
+            android:textSize="10sp" />
 
         <TextView
             android:layout_width="wrap_content"
