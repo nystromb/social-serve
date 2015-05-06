@@ -26,7 +26,21 @@ public class DinnerPartyAdapter extends ParseQueryAdapter<Dinner> {
         });
     }
 
+    public DinnerPartyAdapter(Context context, final String name, final Object obj) {
+        // Use the QueryFactory to construct a PQA that will only show
+        // Todos marked as high-pri
+        super(context, new ParseQueryAdapter.QueryFactory<Dinner>() {
+            public ParseQuery create() {
+                ParseQuery query = new ParseQuery("events");
 
+                if(!name.isEmpty()){
+                    query.whereEqualTo(name, obj);
+                }
+
+                return query;
+            }
+        });
+    }
 
     // Customize the layout by overriding getItemView
     @Override

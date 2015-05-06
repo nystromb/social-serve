@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.parse.ParseQueryAdapter;
+import com.parse.ParseUser;
 
 
 /**
@@ -57,7 +58,7 @@ public class EventsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_events, container, false);
-        mainAdapter = new DinnerPartyAdapter(view.getContext());
+        mainAdapter = new DinnerPartyAdapter(view.getContext(), "host", ParseUser.getCurrentUser().getEmail());
 
         //Subclass of Parse Query Adapter
 

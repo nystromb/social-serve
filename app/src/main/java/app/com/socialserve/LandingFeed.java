@@ -14,10 +14,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQueryAdapter;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
@@ -172,6 +174,9 @@ public class LandingFeed extends ActionBarActivity
          * fragment.
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
+        private ParseQueryAdapter mainAdapter;
+        ListView eventsList;
+
 
         /**
          * Returns a new instance of this fragment for the given section
@@ -191,8 +196,14 @@ public class LandingFeed extends ActionBarActivity
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_landing_feed, container, false);
-            return rootView;
+            View view = inflater.inflate(R.layout.fragment_events, container, false);
+            mainAdapter = new DinnerPartyAdapter(view.getContext());
+
+            //Subclass of Parse Query Adapter
+
+            eventsList = (ListView) view.findViewById(R.id.eventsListView);
+            eventsList.setAdapter(mainAdapter);
+            return view;
         }
 
         @Override
