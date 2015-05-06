@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp">
+    android:padding="10dp">
 
 
     <TextView
@@ -21,7 +21,6 @@
         android:text="on 12/23/2015"
         android:id="@+id/list_date"
         android:layout_marginLeft="5dp"
-        android:layout_marginBottom="5dp"
         android:layout_below="@id/list_name"
         android:layout_alignParentLeft ="true" />
 
@@ -36,7 +35,8 @@
         android:orientation="horizontal"
         android:layout_below="@id/list_description"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/listviewLinearLayout">
 
 
         <TextView
@@ -46,26 +46,11 @@
             android:id="@+id/textView"
             />
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:id="@+id/eventAttending"
-            android:text="0"
-            android:textSize="10sp" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/capacity"
-            android:id="@+id/textView2" />
+            android:id="@+id/eventAttending" />
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:id="@+id/eventCapacity"
-            android:text="20" />
     </LinearLayout>
 
 
