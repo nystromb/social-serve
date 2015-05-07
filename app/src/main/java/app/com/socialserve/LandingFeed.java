@@ -1,20 +1,24 @@
 package app.com.socialserve;
 
+import android.app.ListFragment;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseQueryAdapter;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
@@ -22,8 +26,8 @@ import com.parse.SaveCallback;
 
 public class LandingFeed extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks,
-                   AddDinnerParty.CreateEventListener {
-
+                   AddDinnerParty.CreateEventListener  {
+    Fragment f;
     @Override
     public void createEvent(String name, String address, int seatsAvail, String date, String desc, String ingredients, String host) {
         Dinner events = new Dinner();
@@ -133,9 +137,28 @@ public class LandingFeed extends ActionBarActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_example) {
+            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+            sharingIntent.setType("text/plain");
+            String shareBody = "Hey check out SocialServe! It's an A+ Dinner discovery app! http://www.SocialServeApp.com";
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+            startActivity(Intent.createChooser(sharingIntent, "Tell your friends about us!"));
             return true;
         }
+        else if(id == R.id.action_burger){
+            f = PlaceholderFragment.newInstance(2,"ingredients", "Burgers");
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, f)
+                    .commit();
+            Toast.makeText(getApplicationContext(), "Searching for Burgers", Toast.LENGTH_LONG).show();
+
+        }
+        else if(id== R.id.action_bbq)
+            Toast.makeText(getApplicationContext(), "Search for BBQ", Toast.LENGTH_LONG).show();
+        else if(id == R.id.spaghetti)
+            Toast.makeText(getApplicationContext(), "Search for Spaghetti", Toast.LENGTH_LONG).show();
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -149,11 +172,15 @@ public class LandingFeed extends ActionBarActivity
          * fragment.
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
+        private static String SORT = "";
+        private static String QUERY = "";
+
         private ParseQueryAdapter mainAdapter;
         ListView eventsList;
 
         public PlaceholderFragment() {
         }
+
 
         /**
          * Returns a new instance of this fragment for the given section
@@ -167,17 +194,38 @@ public class LandingFeed extends ActionBarActivity
             return fragment;
         }
 
+        //Returns Sorted Fragment
+        public static PlaceholderFragment newInstance(int sectionNumber, String sortName, String query) {
+            PlaceholderFragment fragment = new PlaceholderFragment();
+            Bundle args = new Bundle();
+            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+            args.putString(SORT, sortName);
+            args.putString(QUERY, query);
+            fragment.setArguments(args);
+            return fragment;
+        }
+
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
 
             View view = inflater.inflate(R.layout.fragment_events, container, false);
-            mainAdapter = new DinnerPartyAdapter(view.getContext());
-
             eventsList = (ListView) view.findViewById(R.id.eventsListView);
+
+            Bundle b = getArguments();
+            String s = b.getString("sort");
+            String q = b.getString("query");
+
+            if (s != null)
+                mainAdapter = new DinnerPartyAdapter(view.getContext(), s, q, 1);
+            else //Load Original Adapter
+                mainAdapter = new DinnerPartyAdapter(view.getContext());
+
             eventsList.setAdapter(mainAdapter);
+
             return view;
         }
-    }
 
-}
+    }
+ }
+

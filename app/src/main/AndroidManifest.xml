@@ -36,6 +36,10 @@
             android:name=".Dinner"
             android:label="@string/title_activity_dinner" >
         </activity>
+        <activity
+            android:name=".hdfhyery"
+            android:label="@string/title_activity_hdfhyery" >
+        </activity>
     </application>
 
 </manifest>

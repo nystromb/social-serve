@@ -1,6 +1,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context="app.com.socialserve.ApplicationActivity">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
+    <item android:id="@+id/action_feedback" android:title="Give us feedback"
         android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_rateus" android:title="Rate Us"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_report" android:title="Report an issue"
+        android:orderInCategory="100" app:showAsAction="never" />
+
 </menu>

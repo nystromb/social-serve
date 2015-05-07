@@ -1,8 +1,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".LandingFeed">
-    <item android:id="@+id/action_example" android:title="@string/action_example"
+    <item android:id="@+id/action_example" android:title="Share Us!"
         app:showAsAction="withText|ifRoom" />
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
+    <item android:id="@+id/action_burger" android:title="Burgers"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_bbq" android:title="BBQ"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/spaghetti" android:title="Spaghetti"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/party" android:title="Party"
         android:orderInCategory="100" app:showAsAction="never" />
 </menu>

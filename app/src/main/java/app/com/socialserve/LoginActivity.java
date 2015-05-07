@@ -49,7 +49,7 @@ public class LoginActivity extends FragmentActivity
             public void done(ParseUser user, ParseException e) {
                 if (user != null) {
                     // Hooray! The user is logged in.
-                    Toast.makeText(getApplicationContext(), "Welcome, " + user.getUsername(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Welcome, " + user.getCurrentUser(), Toast.LENGTH_LONG).show();
                     Intent loggedIn = new Intent(LoginActivity.this, LandingFeed.class);
                     startActivity(loggedIn);
                 } else {

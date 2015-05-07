@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="200dp"
-    android:layout_margin="10dp"
-    android:background="#fff">
+    android:layout_height="wrap_content"
+    android:paddingLeft="10dp"
+    android:layout_margin="5dp"
+    android:background="@layout/materialdrop"
+    android:dividerHeight="0dp" >>
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#000"
         android:text="Graduation"
-        android:id="@+id/list_name10"
+        android:id="@+id/list_name"
+        android:textColor="#203246"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -21,9 +23,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="on 12/23/2015"
-        android:id="@+id/list_date10"
-        android:layout_marginLeft="5dp"
-        android:layout_marginBottom="5dp"
+        android:id="@+id/list_date"
+        android:paddingTop="-3dp"
         android:layout_below="@id/list_name"
         android:layout_alignParentLeft ="true" />
 
@@ -32,41 +33,32 @@
         android:layout_height="wrap_content"
         android:text="This is a description of the party"
         android:id="@+id/list_description"
+        android:textColor="#203246"
         android:layout_below="@id/list_date" />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_below="@id/list_description"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/listviewLinearLayout">
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/attend"
+            android:textColor="#203246"
             android:id="@+id/textView"
             />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:id="@+id/eventAttending"
-            android:text="0"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/capacity"
-            android:id="@+id/textView2" />
+            android:id="@+id/eventAttending"
+            android:textColor="#15856f"
+            />
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:id="@+id/eventCapacity"
-            android:text="20" />
     </LinearLayout>
 
 
