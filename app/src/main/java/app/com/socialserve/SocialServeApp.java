@@ -16,7 +16,7 @@ public class SocialServeApp extends Application {
         super.onCreate();
 
         //Register Sub Classes
-        ParseObject.registerSubclass(Dinner.class);
+        ParseObject.registerSubclass(Event.class);
 
         //initialize parse with keys
 

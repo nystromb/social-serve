@@ -8,34 +8,37 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
+
 import com.parse.ParseQueryAdapter;
-import com.parse.ParseUser;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DinnerDetail extends Fragment {
+public class EventDetailFragment extends Fragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
 
     ListView eventsList;
     private ParseQueryAdapter mainAdapter;
-    private DinnerPartyAdapter eventsAdapter;
+    private EventAdapter eventsAdapter;
+    private static final String EVENT_KEY = "event_item";
+    private Event event;
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
     }
 
-    public DinnerDetail() {
+    public EventDetailFragment() {
         // Required empty public constructor
     }
 
     //Create fragment and pass info into bundle for Efficiency
-    public static DinnerDetail newInstance(int sectionNumber, String name, String description, int seatsAvail, String host, String time, String location) {
-        DinnerDetail fragment = new DinnerDetail();
+    public static EventDetailFragment newInstance(Event details) {
+        EventDetailFragment fragment = new EventDetailFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+        args.putSerializable(EVENT_KEY, details);
         fragment.setArguments(args);
         return fragment;
     }
@@ -45,11 +48,12 @@ public class DinnerDetail extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_events, container, false);
-        //set up the adapter and apply to the ListView
-        mainAdapter = new DinnerPartyAdapter(view.getContext(), "host", ParseUser.getCurrentUser().getEmail(), 1);
-        eventsList = (ListView) view.findViewById(android.R.id.list);
-        eventsList.setAdapter(mainAdapter);
+        View view = inflater.inflate(R.layout.fragment_event_detail, container, false);
+        event = (Event) getArguments().getSerializable(EVENT_KEY);
+
+        TextView name = (TextView) view.findViewById(R.id.eventName);
+        name.setText(event.getTitle());
+
         return view;
     }
 

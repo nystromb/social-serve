@@ -23,11 +23,11 @@ import com.parse.SaveCallback;
 
 public class LandingFeedActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks,
-                   CreateEventFragment.CreateEventListener  {
+                   CreateEventFragment.CreateEventListener{
     Fragment f;
     @Override
     public void createEvent(String name, String address, int seatsAvail, String date, String desc, String ingredients, String host) {
-        Dinner events = new Dinner();
+        Event events = new Event();
         events.setTitle(name);
         events.setLocation(address);
         events.setSeats(seatsAvail);
@@ -79,7 +79,7 @@ public class LandingFeedActivity extends ActionBarActivity
 
         switch(position){
             case 0:
-                fragment = PlaceholderFragment.newInstance(position+1);
+                fragment = LandingFeedFragment.newInstance(position + 1);
                 mTitle = getString(R.string.title_section1);
                 break;
             case 1:
@@ -143,7 +143,7 @@ public class LandingFeedActivity extends ActionBarActivity
             return true;
         }
         else if(id == R.id.action_burger){
-            f = PlaceholderFragment.newInstance(2,"ingredients", "Burgers");
+            f = LandingFeedFragment.newInstance(2, "ingredients", "Burgers");
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction()
                     .replace(R.id.container, f)
@@ -163,7 +163,7 @@ public class LandingFeedActivity extends ActionBarActivity
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends ListFragment {
+    public static class LandingFeedFragment extends ListFragment {
         /**
          * The fragment argument representing the section number for this
          * fragment.
@@ -175,7 +175,8 @@ public class LandingFeedActivity extends ActionBarActivity
         private ParseQueryAdapter mainAdapter;
         ListView eventsList;
 
-        public PlaceholderFragment() {
+        public LandingFeedFragment() {
+
         }
 
 
@@ -183,8 +184,8 @@ public class LandingFeedActivity extends ActionBarActivity
          * Returns a new instance of this fragment for the given section
          * number.
          */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
+        public static LandingFeedFragment newInstance(int sectionNumber) {
+            LandingFeedFragment fragment = new LandingFeedFragment();
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
             fragment.setArguments(args);
@@ -192,8 +193,8 @@ public class LandingFeedActivity extends ActionBarActivity
         }
 
         //Returns Sorted Fragment
-        public static PlaceholderFragment newInstance(int sectionNumber, String sortName, String query) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
+        public static LandingFeedFragment newInstance(int sectionNumber, String sortName, String query) {
+            LandingFeedFragment fragment = new LandingFeedFragment();
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
             args.putString(SORT, sortName);
@@ -214,9 +215,9 @@ public class LandingFeedActivity extends ActionBarActivity
             String q = b.getString("query");
 
             if (s != null)
-                mainAdapter = new DinnerPartyAdapter(view.getContext(), s, q, 1);
+                mainAdapter = new EventAdapter(view.getContext(), s, q, 1);
             else //Load Original Adapter
-                mainAdapter = new DinnerPartyAdapter(view.getContext());
+                mainAdapter = new EventAdapter(view.getContext());
 
             eventsList.setAdapter(mainAdapter);
 
@@ -227,8 +228,14 @@ public class LandingFeedActivity extends ActionBarActivity
         @Override
         public void onListItemClick(ListView l, View v, int position, long id) {
             super.onListItemClick(l, v, position, id);
+            Event item = (Event) getListView().getItemAtPosition(position);
 
-            Toast.makeText(getActivity(), "Clicked", Toast.LENGTH_SHORT).show();
+            Fragment fragment = EventDetailFragment.newInstance(item);
+            FragmentManager fm = getFragmentManager();
+            fm.beginTransaction()
+                    .addToBackStack(null)
+                    .replace(R.id.container, fragment)
+                    .commit();
         }
 
     }

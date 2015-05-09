@@ -3,10 +3,12 @@ package app.com.socialserve;
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
 
-@ParseClassName("events")
-public class Dinner extends ParseObject {
+import java.io.Serializable;
 
-    public Dinner(){
+@ParseClassName("events")
+public class Event extends ParseObject implements Serializable {
+
+    public Event(){
 
     }
 
@@ -66,4 +68,9 @@ public class Dinner extends ParseObject {
 
     public int getSeatsSold(){ return getInt("seatsSold"); }
 
+    public void setSeatsSold(int seats){ put("seatsSold", seats);}
+
+    public Event getParseObject() {
+        return this;
+    }
 }
