@@ -3,19 +3,12 @@ import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.widget.Toast;
 
-import com.parse.FindCallback;
-import com.parse.GetCallback;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
-
-import java.util.List;
 
 
 public class LoginActivity extends FragmentActivity
@@ -50,7 +43,7 @@ public class LoginActivity extends FragmentActivity
                 if (user != null) {
                     // Hooray! The user is logged in.
                     Toast.makeText(getApplicationContext(), "Welcome, " + user.getCurrentUser(), Toast.LENGTH_LONG).show();
-                    Intent loggedIn = new Intent(LoginActivity.this, LandingFeed.class);
+                    Intent loggedIn = new Intent(LoginActivity.this, LandingFeedActivity.class);
                     startActivity(loggedIn);
                 } else {
                     // Signup failed.

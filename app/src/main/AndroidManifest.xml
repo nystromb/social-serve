@@ -25,11 +25,11 @@
             android:label="@string/title_activity_login" >
         </activity>
         <activity
-            android:name=".LandingFeed"
+            android:name=".LandingFeedActivity"
             android:label="@string/title_landing_feed" >
         </activity>
         <activity
-            android:name=".AddDinnerParty"
+            android:name=".CreateEventFragment"
             android:label="@string/title_activity_add_dinner_party" >
         </activity>
         <activity

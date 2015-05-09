@@ -1,24 +1,16 @@
 package app.com.socialserve;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.parse.ParseFile;
-import com.parse.ParseImageView;
-import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
 
 
-public class DinnerPartyAdapter extends ParseQueryAdapter<Dinner> implements OnItemClickListener  {
+public class DinnerPartyAdapter extends ParseQueryAdapter<Dinner>  {
     //query to get all events
     public int flag = 0;
     public DinnerPartyAdapter(Context context) {
@@ -51,7 +43,7 @@ public class DinnerPartyAdapter extends ParseQueryAdapter<Dinner> implements OnI
     public View getItemView(Dinner dinner, View v, ViewGroup parent) {
 
         if(flag == 1) {
-            v = View.inflate(getContext(), R.layout.urgent_item, null);
+            v = View.inflate(getContext(), R.layout.my_events_row, null);
             super.getItemView(dinner, v, parent);
 
             // Add all data to the layout
@@ -66,7 +58,7 @@ public class DinnerPartyAdapter extends ParseQueryAdapter<Dinner> implements OnI
 
         }
         else {
-            v = View.inflate(getContext(), R.layout.urgent_item1, null);
+            v = View.inflate(getContext(), R.layout.home_row, null);
             super.getItemView(dinner, v, parent);
 
             // Add all data to the layout
@@ -87,21 +79,4 @@ public class DinnerPartyAdapter extends ParseQueryAdapter<Dinner> implements OnI
 
         return v;
     }
-
- /* On Item Click Method */
- public void onItemClick(AdapterView<?> parent, View view,
-                         int position, long id) {
-     Log.d("Item CLicked:", Integer.toString(position));
-
-    // ParseObject parseObject = .getItem(position);
-
-     // Use the parseobject here
-     Context context = getContext();
-     Toast toast = Toast.makeText(context, "Clicked!", Toast.LENGTH_SHORT);
-     toast.show();
-
-
- }
-
-
 }

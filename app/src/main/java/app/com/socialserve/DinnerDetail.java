@@ -48,7 +48,7 @@ public class DinnerDetail extends Fragment {
         View view = inflater.inflate(R.layout.fragment_events, container, false);
         //set up the adapter and apply to the ListView
         mainAdapter = new DinnerPartyAdapter(view.getContext(), "host", ParseUser.getCurrentUser().getEmail(), 1);
-        eventsList = (ListView) view.findViewById(R.id.eventsListView);
+        eventsList = (ListView) view.findViewById(android.R.id.list);
         eventsList.setAdapter(mainAdapter);
         return view;
     }

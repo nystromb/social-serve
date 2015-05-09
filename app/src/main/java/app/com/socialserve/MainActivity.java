@@ -3,10 +3,7 @@ package app.com.socialserve;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
-import com.parse.Parse;
 import com.parse.ParseUser;
 
 
@@ -29,7 +26,7 @@ public class MainActivity extends ActionBarActivity {
         ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {
             // show the logged in screen
-            Intent loggedIn = new Intent(this, LandingFeed.class);
+            Intent loggedIn = new Intent(this, LandingFeedActivity.class);
             startActivity(loggedIn);
         } else {
             // show the signup or login screen

@@ -1,32 +1,29 @@
 package app.com.socialserve;
 
-import android.app.ListFragment;
 import android.content.Intent;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.ListFragment;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.parse.ParseException;
-import com.parse.ParseObject;
 import com.parse.ParseQueryAdapter;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 
-public class LandingFeed extends ActionBarActivity
+public class LandingFeedActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks,
-                   AddDinnerParty.CreateEventListener  {
+                   CreateEventFragment.CreateEventListener  {
     Fragment f;
     @Override
     public void createEvent(String name, String address, int seatsAvail, String date, String desc, String ingredients, String host) {
@@ -86,11 +83,11 @@ public class LandingFeed extends ActionBarActivity
                 mTitle = getString(R.string.title_section1);
                 break;
             case 1:
-                fragment = EventsFragment.newInstance(position+1);
+                fragment = MyEventsFragment.newInstance(position + 1);
                 mTitle = getString(R.string.title_section2);
                 break;
             case 2:
-                fragment = AddDinnerParty.newInstance(position+1);
+                fragment = CreateEventFragment.newInstance(position + 1);
                 mTitle = getString(R.string.title_section3);
                 break;
             case 3:
@@ -166,7 +163,7 @@ public class LandingFeed extends ActionBarActivity
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class PlaceholderFragment extends ListFragment {
         /**
          * The fragment argument representing the section number for this
          * fragment.
@@ -210,7 +207,7 @@ public class LandingFeed extends ActionBarActivity
                                  Bundle savedInstanceState) {
 
             View view = inflater.inflate(R.layout.fragment_events, container, false);
-            eventsList = (ListView) view.findViewById(R.id.eventsListView);
+            eventsList = (ListView) view.findViewById(android.R.id.list);
 
             Bundle b = getArguments();
             String s = b.getString("sort");
@@ -224,6 +221,14 @@ public class LandingFeed extends ActionBarActivity
             eventsList.setAdapter(mainAdapter);
 
             return view;
+        }
+
+
+        @Override
+        public void onListItemClick(ListView l, View v, int position, long id) {
+            super.onListItemClick(l, v, position, id);
+
+            Toast.makeText(getActivity(), "Clicked", Toast.LENGTH_SHORT).show();
         }
 
     }

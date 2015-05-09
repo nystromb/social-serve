@@ -1,23 +1,17 @@
 package app.com.socialserve;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-import com.parse.ParseObject;
 import com.parse.ParseUser;
 
-public class AddDinnerParty extends Fragment {
+public class CreateEventFragment extends Fragment {
     EditText eventName, eventAddress, seatsAvail, eventDate, eventDescription, ingredients;
     Button addEventBtn;
     CreateEventListener listener;
@@ -40,7 +34,7 @@ public class AddDinnerParty extends Fragment {
         }
     }
 
-    public AddDinnerParty() {
+    public CreateEventFragment() {
     }
 
     @Override
@@ -77,8 +71,8 @@ public class AddDinnerParty extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
-    public static AddDinnerParty newInstance(int sectionNumber){
-        AddDinnerParty fragment = new AddDinnerParty();
+    public static CreateEventFragment newInstance(int sectionNumber){
+        CreateEventFragment fragment = new CreateEventFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
