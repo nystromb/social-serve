@@ -66,7 +66,5 @@ public class MyEventsFragment extends ListFragment {
                 .addToBackStack(null)
                 .replace(R.id.container, fragment)
                 .commit();
-
-        //listener.EventClick(item);
     }
 }

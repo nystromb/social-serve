@@ -5,7 +5,7 @@
     android:paddingLeft="10dp"
     android:layout_margin="5dp"
     android:background="@layout/materialdrop"
-    android:dividerHeight="0dp" >>
+    android:dividerHeight="0dp" >
 
 
     <TextView
