@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.parse.ParseQueryAdapter;
 
+import org.w3c.dom.Text;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -53,6 +55,19 @@ public class EventDetailFragment extends Fragment {
 
         TextView name = (TextView) view.findViewById(R.id.eventName);
         name.setText(event.getTitle());
+
+        TextView desc = (TextView) view.findViewById(R.id.eventDescription);
+        desc.setText(event.getDescription());
+
+        TextView ingredients = (TextView) view.findViewById(R.id.eventIngredients);
+        ingredients.setText(event.getIngredients());
+
+        TextView host = (TextView) view.findViewById(R.id.eventHost);
+        host.setText("Hosted by " + event.getHost());
+
+        TextView date = (TextView) view.findViewById(R.id.eventDate);
+        date.setText("On " + event.getTime());
+
 
         return view;
     }

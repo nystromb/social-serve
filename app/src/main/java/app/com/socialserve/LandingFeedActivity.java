@@ -25,6 +25,7 @@ public class LandingFeedActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks,
                    CreateEventFragment.CreateEventListener{
     Fragment f;
+
     @Override
     public void createEvent(String name, String address, int seatsAvail, String date, String desc, String ingredients, String host) {
         Event events = new Event();
