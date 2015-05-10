@@ -17,6 +17,7 @@ public class EventAdapter extends ParseQueryAdapter<Event>  {
         super(context, new ParseQueryAdapter.QueryFactory<Event>() {
             public ParseQuery create() {
                 ParseQuery query = new ParseQuery("events");
+                query.addDescendingOrder("createdAt");
                 return query;
             }
         });
