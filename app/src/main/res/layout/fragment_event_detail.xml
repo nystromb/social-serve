@@ -11,8 +11,71 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="3dp"
+        android:textSize="33dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/eventName"
         android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Event Name" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="This is the description of the event. All your information will be in here about the event."
+        android:layout_below="@id/eventName"
+        android:id="@+id/eventDescription"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Hosted By: demo"
+        android:id="@+id/eventHost"
+        android:layout_below="@+id/eventIngredientsTitle"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="On 05/23/2015"
+        android:layout_below="@id/eventHost"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/eventDate" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Ingredients:"
+        android:id="@+id/eventIngredientsTitle"
+        android:layout_below="@id/eventDescription"
+         />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/eventIngredients"
+        android:paddingTop="3dp"
+        android:paddingLeft="3dp"
+        android:layout_alignTop="@id/eventIngredientsTitle"
+        android:layout_toRightOf="@id/eventIngredientsTitle"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RSVP Event"
+        android:id="@+id/button"
+        android:layout_below="@id/eventDate"
+        android:layout_alignParentRight="true"
+        />
+
+
 </RelativeLayout>
